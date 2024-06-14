@@ -10,13 +10,13 @@
 // code Refractor
 
 
-import Header from "./app/navbar/header"
+// import Header from "./app/navbar/header"
 import Todo from "./app/todo/todo"
 
 function App() {
   return(
     <div>
-       <Header/>
+       {/* <Header/> */}
        <Todo/>
     </div>
    

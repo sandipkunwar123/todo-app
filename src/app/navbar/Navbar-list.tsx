@@ -17,7 +17,7 @@ function NavbarList() {
             text:"product",
             path:"/product",
         },
-    ];
+    ]
     return(
         <ul>
             {navList.map((item) => {

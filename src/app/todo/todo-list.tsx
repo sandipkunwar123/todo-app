@@ -43,11 +43,27 @@ export default function TodoList() {
             return todo
         })
         setTodoList(newTodos)}
+        const removeTodo = (id)=>{
+            const newTodos = todoList.filter(item=>item.id!==id)
+           setTodoList(newTodos)
+            // .pop()
+            // .slice()
+            // .unshift()
+        }
+
     return(
         <ul>
-          {todoList.map((item,index)=>{
+          {todoList.map((item)=>{
             return(
-                <TodoItem key ={index} text={item.title} description={item.description} id={item.id} toggleCompleted={toggleCompleted} />
+                <TodoItem 
+                key ={`todo-${item.id}`} 
+                text={item.title} 
+                description={item.description} 
+                id={item.id} 
+                toggleCompleted={toggleCompleted}
+                removeTodo={removeTodo}
+                />
+                
             )
           })}
           
