@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "../../components/button";
+import { Button } from "../../components/ui/button";
 import uuid4 from "uuid4";
 
 function TodoForm(props) {
@@ -50,7 +50,7 @@ function TodoForm(props) {
           value={description}
         />
       </div>
-      <Button title="Add" />
+      <Button>Add</Button>
     </form>
   );
 }
