@@ -9,17 +9,44 @@
 // Debugging
 // code Refractor
 
+import Counter from "./app/counter";
+import Profile from "./app/profile";
+import Todo from "./app/todo/todo";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ErrorPAge from "./lib/router/error-page";
+import TodoDetail from "./app/todo/todo-detail";
+import Root from "./lib/root";
 
- 
-import Todo from "./app/todo/todo"
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    children: [
+      {
+        path: "/",
+        element: <Todo />,
+      },
+
+      {
+        path: "/todo/:id",
+        element: <TodoDetail />,
+      },
+
+      {
+        path: "/counter",
+        element: <Counter />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+    ],
+  },
+
+  { path: "*", element: <ErrorPAge /> },
+]);
 
 function App() {
-  return(
-    <div>
-        
-       <Todo/>
-    </div>
-   
-  )
+  return <RouterProvider router={router} />;
 }
 export default App;

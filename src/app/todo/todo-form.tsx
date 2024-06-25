@@ -1,6 +1,18 @@
 import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import uuid4 from "uuid4";
+import { Input } from "@/components/ui/input";
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 function TodoForm(props) {
   const { addTodo } = props;
@@ -27,31 +39,43 @@ function TodoForm(props) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="title">Title</label>
-        <input
-          type="text"
-          id="title"
-          name="title"
-          onChange={handleChange}
-          className="border"
-          value={title}
-        />
-      </div>
-      <div>
-        <label htmlFor="description">Description</label>
-        <input
-          type="text"
-          id="description"
-          name="description"
-          onChange={handleChange}
-          className="border"
-          value={description}
-        />
-      </div>
-      <Button>Add</Button>
-    </form>
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button variant="outline">Add Todo</Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Add Todo</AlertDialogTitle>
+        </AlertDialogHeader>
+
+        <form onSubmit={handleSubmit}>
+          <div>
+            <Input
+              type="text"
+              id="title"
+              name="title"
+              onChange={handleChange}
+              label="Title"
+              value={title}
+            />
+          </div>
+          <div>
+            <Input
+              type="text"
+              id="description"
+              name="description"
+              onChange={handleChange}
+              label="Description"
+              value={description}
+            />
+          </div>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction type="submit">Continue</AlertDialogAction>
+          </AlertDialogFooter>
+        </form>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }
 export default TodoForm;

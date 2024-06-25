@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "../../components/ui/button";
 function TodoItem(props) {
   return (
@@ -8,7 +9,8 @@ function TodoItem(props) {
         value={props.completed}
         onChange={() => props.toggleCompleted(props.id)}
       />
-      <h6>{props.text}</h6>
+      <Link to={`todo/${props.text}`}>{props.text}</Link>
+
       <p>{props.description}</p>
       <Button onClick={() => props.removeTodo(props.id)}>Delete</Button>
     </li>
