@@ -1,19 +1,29 @@
 import { Link } from "react-router-dom";
 import { Button } from "../../components/ui/button";
-function TodoItem(props) {
+interface TodoItemProps {
+  completed: boolean;
+  id: string;
+  title: string;
+  description: string;
+  toggleCompleted: (id: string) => void;
+  removeTodo: (id: string) => void;
+}
+
+export default function TodoItem(props: TodoItemProps) {
+  const { completed, toggleCompleted, id, title, description, removeTodo } =
+    props;
   return (
     <li>
       <input
         type="checkbox"
-        checked={props.completed}
-        value={props.completed}
-        onChange={() => props.toggleCompleted(props.id)}
+        checked={completed}
+        value={completed ? "true" : "false"}
+        onChange={() => toggleCompleted(id)}
       />
-      <Link to={`todo/${props.text}`}>{props.text}</Link>
+      <Link to={`todo/${id}`}>{title}</Link>
 
-      <p>{props.description}</p>
-      <Button onClick={() => props.removeTodo(props.id)}>Delete</Button>
+      <p>{description}</p>
+      <Button onClick={() => removeTodo(id)}>Delete</Button>
     </li>
   );
 }
-export default TodoItem;

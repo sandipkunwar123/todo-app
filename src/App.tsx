@@ -15,7 +15,7 @@ import Todo from "./app/todo/todo";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPAge from "./lib/router/error-page";
 import TodoDetail from "./app/todo/todo-detail";
-import Root from "./lib/root";
+import Root from "./app/layout/root";
 
 const router = createBrowserRouter([
   {

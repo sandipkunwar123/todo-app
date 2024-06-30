@@ -13,8 +13,13 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { ITodoItem } from "./todo";
 
-function TodoForm(props) {
+interface TodoFormsProps {
+  addTodo: (todo: ITodoItem) => void;
+}
+
+function TodoForm(props: TodoFormsProps) {
   const { addTodo } = props;
   const [todo, setTodo] = useState({
     title: "",
@@ -23,12 +28,12 @@ function TodoForm(props) {
 
   const { title, description } = todo;
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     setTodo({ ...todo, [name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newTodos = { ...todo, completed: false, id: uuid4() };
     addTodo(newTodos);
